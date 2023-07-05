@@ -18,6 +18,11 @@ module.exports = class ACLNode {
   constructor(config, name = 'anonymous node') {
     this.#config = config;
     this.name = name;
+    this.#children = [];
+  }
+
+  appendChildren(node) {
+    this.#children.push(node);
   }
 
   update(newConfig) {
