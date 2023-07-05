@@ -36,7 +36,7 @@ module.exports = class ACLNode {
   }
 
   set config(value) {
-    this.#children = value;
+    this.#config = value;
     this.updateChilderen();
   }
 
