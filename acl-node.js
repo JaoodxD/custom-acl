@@ -27,7 +27,7 @@ module.exports = class ACLNode {
   }
 
   get config() {
-    return this.config;
+    return this.#config;
   }
 
   set config(value) {
