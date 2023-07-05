@@ -11,8 +11,8 @@ const validator = {
 };
 
 
-class ACLNode {
   #name;
+module.exports = class ACLNode {
   #config;
   #children;
   constructor(config, name = 'anonymous node') {
