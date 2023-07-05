@@ -11,13 +11,13 @@ const validator = {
 };
 
 
-  #name;
 module.exports = class ACLNode {
+  name;
   #config;
   #children;
   constructor(config, name = 'anonymous node') {
     this.#config = config;
-    this.#name = name;
+    this.name = name;
   }
 
   update(newConfig) {
