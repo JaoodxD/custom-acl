@@ -1,6 +1,6 @@
 'use strict';
 
-const ACLNode = require('./acl-node.js');
+const ACLNode = require('./lib/acl-node.js');
 
 const head = new ACLNode({}, 'global config');
 const group = new ACLNode({}, 'group: programmers');
