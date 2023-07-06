@@ -2,9 +2,9 @@
 
 const ACLNode = require('./lib/acl-node.js');
 
-const head = new ACLNode({}, 'global config');
-const group = new ACLNode({}, 'group: programmers');
-const user = new ACLNode({}, 'user: D1mASS14ek');
+const head = new ACLNode({ config: {}, name: 'global config' });
+const group = new ACLNode({ config: {}, name: 'group: programmers' });
+const user = new ACLNode({ config: {}, name: 'user: D1mASS14ek' });
 
 head.appendChildren(group);
 group.appendChildren(user);
