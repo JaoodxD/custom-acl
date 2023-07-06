@@ -10,17 +10,12 @@ const validator = {
   }
 };
 
-
 module.exports = class ACLNode {
   name;
   #config;
-  #mergeLogic;
-  #diffLogic;
   #children;
-  constructor(config, name = 'anonymous node', mergeLogic, diffLogic) {
+  constructor(config, name = 'anonymous node') {
     this.#config = config;
-    this.#mergeLogic = mergeLogic;
-    this.#diffLogic = diffLogic;
     this.name = name;
     this.#children = [];
   }
@@ -30,13 +25,9 @@ module.exports = class ACLNode {
   }
 
   update(newConfig) {
-    let config;
-    let cfg = this.#diffLogic ? this.#diffLogic(this.#config, newConfig) : this.#config;
-    if (this.#mergeLogic) config = this.#mergeLogic(cfg, newConfig);
-    else config = newConfig;
-    this.#config = config;
+    this.#config = newConfig;
     console.log('Config updated in', this.name);
-    this.updateChilderen(cfg);
+    this.updateChilderen(newConfig);
   }
 
   get config() {
