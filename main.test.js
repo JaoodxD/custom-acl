@@ -5,7 +5,7 @@ const assert = require('node:assert');
 
 const ACLNode = require('./lib/acl-node.js');
 const diff = require('./lib/diffObjects.js');
-const apply = require('./lib/applyDiffs.js');
+const merge = require('./lib/applyDiffs.js');
 
 const assertNode = (node, expected) => {
   const result = node.config;
@@ -13,10 +13,10 @@ const assertNode = (node, expected) => {
 };
 
 test('acl: complex transitions', () => {
-  const global = new ACLNode({ name: 'global', diff, merge: apply });
-  const group = new ACLNode({ name: 'group', diff, merge: apply });
-  const user1 = new ACLNode({ name: 'user1', diff, merge: apply });
-  const user2 = new ACLNode({ name: 'user2', diff, merge: apply });
+  const global = new ACLNode({ name: 'global', diff, merge });
+  const group = new ACLNode({ name: 'group', diff, merge });
+  const user1 = new ACLNode({ name: 'user1', diff, merge });
+  const user2 = new ACLNode({ name: 'user2', diff, merge });
 
   global.appendChildren(group);
   group.appendChildren(user1);
@@ -83,5 +83,33 @@ test('acl: complex transitions', () => {
 
     expected = { countries: { UA: true, KZ: true, TR: true } };
     assertNode(user1, expected);
+  }
+
+  group.update({ countries: { UA: true, KZ: true, TR: true } });
+
+  // both users now should have TR: true
+  {
+    let expected = { countries: { UA: true, KZ: true, TR: true } };
+    assertNode(user1, expected);
+    assertNode(user2, expected);
+  }
+
+  group.update({ countries: { UA: true, KZ: true, TR: false } });
+
+  // both users now should have TR: false
+  {
+    let expected = { countries: { UA: true, KZ: true, TR: false } };
+    assertNode(user1, expected);
+    assertNode(user2, expected);
+  }
+
+  global.update({ countries: { US: false } });
+
+  // child group and both users should get US: false
+  {
+    const expected = { countries: { UA: true, KZ: true, TR: false, US: false } };
+    assertNode(group, expected);
+    assertNode(user1, expected);
+    assertNode(user2, expected);
   }
 });
