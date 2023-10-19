@@ -2,7 +2,7 @@
   "name": "custom-acl",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
+  "main": "custom-acl.js",
   "scripts": {
     "test": "node --test ."
   },
