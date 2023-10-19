@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "custom-acl.js",
+  "types": "custom-acl.d.ts",
   "scripts": {
     "test": "node --test ."
   },
