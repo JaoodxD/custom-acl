@@ -5,7 +5,9 @@
   "main": "custom-acl.js",
   "types": "custom-acl.d.ts",
   "scripts": {
-    "test": "node --test ."
+    "test": "npm run lint && node --test .",
+    "lint": "standard",
+    "lint:fix": "standard --fix"
   },
   "keywords": [],
   "author": "Maksym Shenderuk <jaood96@gmail.com>",
