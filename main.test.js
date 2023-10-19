@@ -3,7 +3,7 @@
 const { test } = require('node:test');
 const assert = require('node:assert');
 
-const ACLNode = require('./lib/acl-node.js');
+const AclNode = require('.');
 const diff = require('./lib/diffObjects.js');
 const merge = require('./lib/applyDiffs.js');
 
@@ -13,10 +13,10 @@ const assertNode = (node, expected) => {
 };
 
 test('acl: complex transitions', () => {
-  const global = new ACLNode({ name: 'global', diff, merge });
-  const group = new ACLNode({ name: 'group', diff, merge });
-  const user1 = new ACLNode({ name: 'user1', diff, merge });
-  const user2 = new ACLNode({ name: 'user2', diff, merge });
+  const global = new AclNode({ name: 'global', diff, merge });
+  const group = new AclNode({ name: 'group', diff, merge });
+  const user1 = new AclNode({ name: 'user1', diff, merge });
+  const user2 = new AclNode({ name: 'user2', diff, merge });
 
   global.appendChildren(group);
   group.appendChildren(user1);
