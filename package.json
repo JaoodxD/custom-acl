@@ -9,5 +9,8 @@
   },
   "keywords": [],
   "author": "Maksym Shenderuk <jaood96@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "standard": "^17.1.0"
+  }
 }
