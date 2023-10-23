@@ -6,12 +6,14 @@ export declare class AclNode {
   private #children: AclNode[];
   private #merge: ((config: Record<string, any>, newConfig: Record<string, any>) => void) | null;
   private #diff: ((config: Record<string, any>, newConfig: Record<string, any>) => Record<string, any>) | null;
+  private #onUpdate: () => void;
 
   constructor(options: {
     config?: Record<string, any>;
     name?: string;
     merge?: (config: Record<string, any>, newConfig: Record<string, any>) => void;
     diff?: (config: Record<string, any>, newConfig: Record<string, any>) => Record<string, any>;
+    onUpdate?: () => void;
   });
 
   setParent(node: AclNode): void;
