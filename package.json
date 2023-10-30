@@ -1,6 +1,6 @@
 {
   "name": "custom-acl",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "",
   "main": "custom-acl.js",
   "types": "custom-acl.d.ts",
